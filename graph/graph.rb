@@ -1,17 +1,17 @@
 require 'pry'
 
-# a node whi ch understands its neighbours
+# a node whi ch understands its neighbors
 class Graph
   attr_reader :name
-  attr_accessor :neighbours
+  attr_accessor :neighbors
 
   def initialize(name)
     @name = name
-    @neighbours = []
+    @neighbors = []
   end
 
-  def new_neighbour(node)
-    neighbours.push(node)
+  def new_neighbor(node)
+    neighbors.push(node)
     self
   end
 
@@ -19,13 +19,13 @@ class Graph
     return true if self == destination
     return false if visited_nodes.include?(self)
     visited_nodes.push(self)
-    neighbours.any? {|node| node.can_reach?(destination, visited_nodes) }
+    neighbors.any? {|node| node.can_reach?(destination, visited_nodes) }
   end
 end
 
 a, b, c = Graph.new('a'), b = Graph.new('b'), Graph.new('c')
 
-a.new_neighbour(b)
-b.new_neighbour(c)
+a.new_neighbor(b)
+b.new_neighbor(c)
 
 a.can_reach?(c, [])
